@@ -19,8 +19,12 @@ public class MeanMedianMode {
         float median = 0.0f;
         if((n/2) == 0)
             median = (float) ((a[(n-1)/2] + a[((n-1)/2)+1])/2.0);
+<<<<<<< HEAD
         else
             median = a[n/2];
+=======
+        else median = a[n/2];
+>>>>>>> c27c64c8997daf2b949f19c745f1d432ecd0a9b7
         System.out.printf("%.1f\n", median);
 
         int mode = a[0];
