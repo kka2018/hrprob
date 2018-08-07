@@ -17,7 +17,7 @@ public class MeanMedianMode {
 
         Arrays.sort(a);
         float median = 0.0f;
-        if((n/2) == 0)
+        if((n%2) == 0)
             median = (float) ((a[(n-1)/2] + a[((n-1)/2)+1])/2.0);
 
         else
@@ -26,22 +26,44 @@ public class MeanMedianMode {
 
         System.out.printf("%.1f\n", median);
 
-        int mode = a[0];
-        int count1 = 1, count2 = 1;
+
+
+        int[] counts = new int[n];
+        int[] elements = new int[n];
+
+        int j=0, count=1;
+
+        elements[j] = a[0];
+        counts[j] = count;
+
         for(int i=1; i<n; i++){
-            if(a[i]<=a[i-1]) {
-                count1++;
-                if(count1>count2)
-                    mode = a[i];
+            if(a[i]==a[i-1]) {
+                count++;
+                counts[j] = count;
             }
-            else
-            {
-                count2 = count1;
-                count1 = 1;
-                continue;
+            else{
+                elements[j+1] = a[i];
+                count = 1;
+                counts[j+1] = count;
+                j++;
             }
         }
 
+        int mode = elements[maxIndex(counts)];
+
         System.out.println(mode);
+    }
+
+    public static int maxIndex(int[] a){
+        int max = Integer.MIN_VALUE;
+        int index = 0;
+        for(int i=0; i<a.length; i++){
+            if(max<a[i]) {
+                max = a[i];
+                index = i;
+            }
+        }
+
+        return index;
     }
 }
