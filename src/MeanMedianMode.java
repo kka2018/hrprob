@@ -16,7 +16,11 @@ public class MeanMedianMode {
         System.out.printf("%.1f\n", mean);
 
         Arrays.sort(a);
-        float median = (float) ((a[(n-1)/2] + a[((n-1)/2)+1])/2.0);
+        float median = 0.0f;
+        if((n/2) == 0)
+            median = (float) ((a[(n-1)/2] + a[((n-1)/2)+1])/2.0);
+        else
+            median = a[n/2];
         System.out.printf("%.1f\n", median);
 
         int mode = a[0];
