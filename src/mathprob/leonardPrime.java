@@ -16,29 +16,14 @@ public class leonardPrime {
 
         int count = 0;
         long product = 1;
-        for(int i=2; i<=n; i++){
-            boolean isprime = ifPrime(i);
-            if(isprime==true){
-                product *= i;
-                if(product<=n)
-                    count++;
-                else
-                    break;
-            }
-        }
-
-        return count;
-    }
-
-    public static boolean ifPrime(long n){
-        int i;
-        boolean isprime = false;
-        for(i=2; i<=n/2; i++){
-            if(n%i == 0)
+        int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53};
+        for(int i=0; i<prime.length; i++){
+            product *= prime[i];
+            if(product<=n)
+                count++;
+            else
                 break;
         }
-        if(i == (n/2+1))
-            isprime = true;
-        return isprime;
+        return count;
     }
 }
